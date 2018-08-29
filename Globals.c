@@ -7,6 +7,7 @@
 void initProgramGlobals() {
     labelsHT = createHashTable(20500);
     initOperationsHT();
+    initInstructionsHT();
 }
 
 void initFileGlobals() {
@@ -15,6 +16,8 @@ void initFileGlobals() {
     DC = 0;
 }
 
+/* The value of each operation is the decimal value -
+ * later in the second phase converts to binary */
 void initOperationsHT() {
     operationsHT = createHashTable(17);
     setValue(operationsHT, "mov", 0, NULL);
@@ -38,8 +41,8 @@ void initOperationsHT() {
 /* This hash table is just for an approx 0(1) search time through instructions names */
 void initInstructionsHT() {
     instructionsHT = createHashTable(4);
-    setValue(instructionsHT, ".data", 0, NULL);
-    setValue(instructionsHT, ".string", 1, NULL);
-    setValue(instructionsHT, ".entry", 2, NULL);
-    setValue(instructionsHT, ".extern", 3, NULL);
+    setValue(instructionsHT, ".data", TRUE, NULL);
+    setValue(instructionsHT, ".string", TRUE, NULL);
+    setValue(instructionsHT, ".entry", TRUE, NULL);
+    setValue(instructionsHT, ".extern", TRUE, NULL);
 }

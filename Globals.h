@@ -36,6 +36,7 @@ HashTable *registersHT;
 void initProgramGlobals();
 void initFileGlobals();
 void initOperationsHT();
+void initInstructionsHT();
 
 
 #endif //LASTCHANCE_GLOBALS_H
