@@ -1,0 +1,3 @@
+/Users/morhaham/Desktop/lastchance/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/morhaham/Desktop/lastchance/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/morhaham/Desktop/lastchance/cmake-build-debug/CMakeFiles/lastchance.dir
