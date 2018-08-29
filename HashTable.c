@@ -89,7 +89,7 @@ void setValue( HashTable *hashtable, char *key, unsigned char value,  char* entr
         next = next->next;
     }
 
-    /* There's already a pair.  Let's replace that string. */
+    /* If there's already a pair,  Let's replace that string. */
     if( next != NULL && next->key != NULL && strcmp( key, next->key ) == 0 ) {
 
         next->value = value;

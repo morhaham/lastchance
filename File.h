@@ -18,8 +18,7 @@ typedef struct FileStruct {
     int lineNum;
 } FileStruct;
 
-
-
+FileStruct *file;
 /* Funcs decs */
 FileStruct* openFile(char *fileName);
 unsigned int readLine(FileStruct *file);

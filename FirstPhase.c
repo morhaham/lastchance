@@ -6,7 +6,7 @@
 #include "File.h"
 #include "Globals.h"
 
-void firstScan(FileStruct *file) {
+void firstScan() {
     char *word, *symbolName;
     unsigned int charIndex, symbolFound;
 
@@ -74,19 +74,24 @@ unsigned int isInstruction(char *word) {
     return FALSE;
 }
 
-/* This function already knows that we have a valid instruction name in the second word of the line
- * and it just scans the parameters(if exist) with strtok and handle the whole instruction line */
+/* This function already knows that we have a valid instruction name
+ * and it just enters the relevant func that will handle instruction params */
 void handleInstruction(char *inst, unsigned int symbolFound, char *symbolName) {
-    char *instType = getType(instructionsHT, inst);
-
-    /* After we know that the instruction line is valid, we can add the symbol if exists */
-    if (symbolFound && instType != ".entry" && instType != ".extern") {
-        /*addSymbol(symbolName);*/
+    if (strcmp(inst, ".extern") == 0) {
+        handleExternInst(inst);
+    } else if (strcmp(inst, ".data") == 0) {
+        handleDataInst(inst);
+    } else if (strcmp(inst, ".string") == 0) {
+        handleStringInst(inst);
     }
 }
 
 int isOperation(char *word) {
-    return 0;
+    /* An approx of 0(1) search time */
+    if (getValue(operationsHT, word)) {
+        return TRUE;
+    }
+    return FALSE;
 }
 
 void handleOperation(char *op, unsigned int symbolFound, char *symbolName) {
@@ -98,3 +103,34 @@ void handleOperation(char *op, unsigned int symbolFound, char *symbolName) {
     }
 }
 
+void handleExternInst(char *inst) {
+    char *param;
+    /* Get to the params section in the line */
+    inst = strtok(NULL, WHITE_SPACE);
+    /* split the line's params section by commas */
+    param = strtok(inst, COMMA);
+    while((param = strtok(NULL, COMMA)) != NULL) {
+        /* If symbol exists in table, continue to the next param */
+        if (getValue(symbolsHT, param)) {
+            continue;
+        }
+        if (isSyntaxValidSymbol(param)) {
+            setValue(symbolsHT, inst, 0, "entry");
+        } else {
+            ASSEMBLY_SYNTAX_ERROR("Invalid symbol name", param, file->lineNum)
+        }
+    }
+
+}
+
+int isSyntaxValidSymbol(char *symbol) {
+    return 0;
+}
+
+void handleDataInst(char *inst) {
+
+}
+
+void handleStringInst(char *inst) {
+
+}

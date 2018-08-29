@@ -5,7 +5,7 @@
 #include "Globals.h"
 
 void initProgramGlobals() {
-    labelsHT = createHashTable(20500);
+    symbolsHT = createHashTable(20500);
     initOperationsHT();
     initInstructionsHT();
 }
@@ -38,7 +38,8 @@ void initOperationsHT() {
     setValue(operationsHT, "stop",15, NULL);
 }
 
-/* This hash table is just for an approx 0(1) search time through instructions names */
+/* This hash table is just for an approx 0(1) search time through instructions names
+ * (for example with isInstruction func) */
 void initInstructionsHT() {
     instructionsHT = createHashTable(4);
     setValue(instructionsHT, ".data", TRUE, NULL);

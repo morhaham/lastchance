@@ -18,6 +18,7 @@ printf(#msg, word, lineNum); \
 
 #define TRUE 1
 #define FALSE 0
+#define COMMA ","
 #define READ_MODE "r"
 #define WHITE_SPACE " \t\v\f\r"
 
@@ -25,7 +26,7 @@ unsigned int FIRST_SCAN_ERRORS_FOUND;
 unsigned int IC;
 unsigned int DC;
 
-HashTable *labelsHT;
+HashTable *symbolsHT;
 HashTable *instructionsHT;
 HashTable *operationsHT;
 HashTable *registersHT;

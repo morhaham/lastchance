@@ -10,8 +10,8 @@ int main(int argc, char **argv) {
 
     for(i = 1; i < argc; i++) {
         initFileGlobals();
-        FileStruct *file = openFile(argv[i]);
-        firstScan(file);
+        file = openFile(argv[i]);
+        firstScan();
 
         if (!FIRST_SCAN_ERRORS_FOUND) {
             /*secondScan(file);*/

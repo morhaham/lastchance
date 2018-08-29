@@ -7,10 +7,15 @@
 
 #include "File.h"
 
-void firstScan(FileStruct *file);
+void firstScan();
 unsigned int isInstruction(char *word);
 void handleInstruction(char *inst, unsigned int symbolFound, char *symbolName);
 int isOperation(char *word);
 void handleOperation(char *op, unsigned int symbolFound, char *symbolName);
+void handleExternInst(char *inst);
+int isSyntaxValidSymbol(char *symbol);
+void handleDataInst(char *inst);
+void handleStringInst(char *inst);
+
 
 #endif //LASTCHANCE_FIRSTPHASE_H
