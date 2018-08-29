@@ -50,6 +50,7 @@ void firstScan(FileStruct *file) {
                 } else {
                     ASSEMBLY_SYNTAX_ERROR("Instruction name %s is invalid at line %d", word, file->lineNum);
                     FIRST_SCAN_ERRORS_FOUND = 1;
+                    continue;
                 }
                 /* If an operation is found, handleOperation will handle the rest of the line
                 * by continuing to extract the tokens of the word using strtok */
@@ -58,6 +59,7 @@ void firstScan(FileStruct *file) {
             } else {
                 ASSEMBLY_SYNTAX_ERROR("Operation name %s is invalid at line %d", word, file->lineNum);
                 FIRST_SCAN_ERRORS_FOUND = 1;
+                continue;
             } /* END OF - IF '.' FOUND IN THE FIRST CHAR AT THE CURRENT WORD */
 
     } /* END OF READING LINES LOOP */
