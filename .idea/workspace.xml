@@ -12,24 +12,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eba14f3f-3134-4e95-8a88-b29eab16bc05" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/HashTable.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/HashTable.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FirstPhase.c" beforeDir="false" afterPath="$PROJECT_DIR$/FirstPhase.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/FirstPhase.h" beforeDir="false" afterPath="$PROJECT_DIR$/FirstPhase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Globals.c" beforeDir="false" afterPath="$PROJECT_DIR$/Globals.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Globals.h" beforeDir="false" afterPath="$PROJECT_DIR$/Globals.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/RunAssembler.c" beforeDir="false" afterPath="$PROJECT_DIR$/RunAssembler.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/link.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/link.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/lastchance.dir/progress.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/lastchance.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/lastchance.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/lastchance" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -57,8 +43,8 @@
       <file leaf-file-name="FirstPhase.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FirstPhase.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+            <state relative-caret-position="513">
+              <caret line="95" column="5" lean-forward="true" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
               <folding>
                 <element signature="e#44#63#0" expanded="true" />
               </folding>
@@ -93,8 +79,8 @@
       <file leaf-file-name="FirstPhase.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/FirstPhase.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="11" column="79" selection-start-line="11" selection-start-column="79" selection-end-line="11" selection-end-column="79" />
+            <state relative-caret-position="372">
+              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -185,11 +171,11 @@
         <option value="$PROJECT_DIR$/test" />
         <option value="$PROJECT_DIR$/File.c" />
         <option value="$PROJECT_DIR$/RunAssembler.c" />
-        <option value="$PROJECT_DIR$/FirstPhase.h" />
         <option value="$PROJECT_DIR$/HashTable.h" />
         <option value="$PROJECT_DIR$/Globals.h" />
         <option value="$PROJECT_DIR$/HashTable.c" />
         <option value="$PROJECT_DIR$/Globals.c" />
+        <option value="$PROJECT_DIR$/FirstPhase.h" />
         <option value="$PROJECT_DIR$/FirstPhase.c" />
       </list>
     </option>
@@ -203,7 +189,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="1">
     <option name="x" value="145" />
     <option name="y" value="29" />
     <option name="width" value="1403" />
@@ -265,28 +251,28 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1535492489821</updated>
-      <workItem from="1535492491298" duration="17821000" />
+      <workItem from="1535492491298" duration="20897000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="17821000" />
+    <option name="totallyTimeSpent" value="20897000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="145" y="29" width="1403" height="971" extended-state="0" />
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19825707" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16505441" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" weight="0.32942554" />
+      <window_info anchor="bottom" id="Messages" weight="0.32914045" />
       <window_info anchor="bottom" id="CMake" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32942554" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32914045" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.21688159" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.19392033" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -384,13 +370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/FirstPhase.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="11" column="79" selection-start-line="11" selection-start-column="79" selection-end-line="11" selection-end-column="79" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Globals.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
@@ -398,10 +377,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/FirstPhase.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/FirstPhase.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="75" lean-forward="true" selection-start-line="75" selection-end-line="75" />
+        <state relative-caret-position="513">
+          <caret line="95" column="5" lean-forward="true" selection-start-line="95" selection-start-column="5" selection-end-line="95" selection-end-column="5" />
           <folding>
             <element signature="e#44#63#0" expanded="true" />
           </folding>

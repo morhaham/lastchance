@@ -5,16 +5,23 @@ CMakeFiles/lastchance.dir/File.c.o
  /Users/morhaham/Desktop/lastchance/File.c
  /Users/morhaham/Desktop/lastchance/File.h
  /Users/morhaham/Desktop/lastchance/Globals.h
+ /Users/morhaham/Desktop/lastchance/HashTable.h
 CMakeFiles/lastchance.dir/FirstPhase.c.o
  /Users/morhaham/Desktop/lastchance/File.h
  /Users/morhaham/Desktop/lastchance/FirstPhase.c
  /Users/morhaham/Desktop/lastchance/FirstPhase.h
  /Users/morhaham/Desktop/lastchance/Globals.h
+ /Users/morhaham/Desktop/lastchance/HashTable.h
 CMakeFiles/lastchance.dir/Globals.c.o
  /Users/morhaham/Desktop/lastchance/Globals.c
  /Users/morhaham/Desktop/lastchance/Globals.h
+ /Users/morhaham/Desktop/lastchance/HashTable.h
+CMakeFiles/lastchance.dir/HashTable.c.o
+ /Users/morhaham/Desktop/lastchance/HashTable.c
+ /Users/morhaham/Desktop/lastchance/HashTable.h
 CMakeFiles/lastchance.dir/RunAssembler.c.o
  /Users/morhaham/Desktop/lastchance/File.h
  /Users/morhaham/Desktop/lastchance/FirstPhase.h
  /Users/morhaham/Desktop/lastchance/Globals.h
+ /Users/morhaham/Desktop/lastchance/HashTable.h
  /Users/morhaham/Desktop/lastchance/RunAssembler.c
