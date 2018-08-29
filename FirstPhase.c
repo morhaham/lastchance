@@ -59,4 +59,26 @@ void firstScan(FileStruct *file) {
 
     } /* END OF READING LINES LOOP */
 
+} /* END OF firstScan FUNCTION */
+
+unsigned int isInstruction(char *word) {
+    /* An approx of 0(1) search time */
+    if (getValue(instructionsHT, word)) {
+        return TRUE;
+    }
+    return FALSE;
+}
+
+/* This function already knows that we have a valid instruction name in the second word of the line
+ * and it just scans the parameters(if exist) with strtok and handle the whole instruction line */
+void handleInstruction(char *inst, unsigned int symbolFound, char *symbolName) {
+
+
+
+
+
+    /* After we know that the instruction line is valid, we can add the symbol if exists */
+    if (symbolFound) {
+        addSymbol(symbolName);
+    }
 }

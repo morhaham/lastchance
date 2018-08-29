@@ -96,6 +96,12 @@
 		<Unit filename="/Users/morhaham/Desktop/lastchance/Globals.h">
 			<Option target="lastchance"/>
 		</Unit>
+		<Unit filename="/Users/morhaham/Desktop/lastchance/HashTable.c">
+			<Option target="lastchance"/>
+		</Unit>
+		<Unit filename="/Users/morhaham/Desktop/lastchance/HashTable.h">
+			<Option target="lastchance"/>
+		</Unit>
 		<Unit filename="/Users/morhaham/Desktop/lastchance/RunAssembler.c">
 			<Option target="lastchance"/>
 		</Unit>

@@ -204,6 +204,33 @@ Globals.c.s:
 	$(MAKE) -f CMakeFiles/lastchance.dir/build.make CMakeFiles/lastchance.dir/Globals.c.s
 .PHONY : Globals.c.s
 
+HashTable.o: HashTable.c.o
+
+.PHONY : HashTable.o
+
+# target to build an object file
+HashTable.c.o:
+	$(MAKE) -f CMakeFiles/lastchance.dir/build.make CMakeFiles/lastchance.dir/HashTable.c.o
+.PHONY : HashTable.c.o
+
+HashTable.i: HashTable.c.i
+
+.PHONY : HashTable.i
+
+# target to preprocess a source file
+HashTable.c.i:
+	$(MAKE) -f CMakeFiles/lastchance.dir/build.make CMakeFiles/lastchance.dir/HashTable.c.i
+.PHONY : HashTable.c.i
+
+HashTable.s: HashTable.c.s
+
+.PHONY : HashTable.s
+
+# target to generate assembly for a file
+HashTable.c.s:
+	$(MAKE) -f CMakeFiles/lastchance.dir/build.make CMakeFiles/lastchance.dir/HashTable.c.s
+.PHONY : HashTable.c.s
+
 RunAssembler.o: RunAssembler.c.o
 
 .PHONY : RunAssembler.o
@@ -249,6 +276,9 @@ help:
 	@echo "... Globals.o"
 	@echo "... Globals.i"
 	@echo "... Globals.s"
+	@echo "... HashTable.o"
+	@echo "... HashTable.i"
+	@echo "... HashTable.s"
 	@echo "... RunAssembler.o"
 	@echo "... RunAssembler.i"
 	@echo "... RunAssembler.s"

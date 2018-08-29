@@ -6,9 +6,10 @@
 
 int main(int argc, char **argv) {
     int i;
+    initProgramGlobals();
 
     for(i = 1; i < argc; i++) {
-        initGlobals();
+        initFileGlobals();
         FileStruct *file = openFile(argv[i]);
         firstScan(file);
 

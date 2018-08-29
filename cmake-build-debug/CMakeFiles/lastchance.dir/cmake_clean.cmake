@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/lastchance.dir/File.c.o"
   "CMakeFiles/lastchance.dir/Globals.c.o"
   "CMakeFiles/lastchance.dir/FirstPhase.c.o"
+  "CMakeFiles/lastchance.dir/HashTable.c.o"
   "lastchance.pdb"
   "lastchance"
 )

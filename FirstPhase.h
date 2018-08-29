@@ -8,4 +8,6 @@
 #include "File.h"
 
 void firstScan(FileStruct *file);
+unsigned int isInstruction(char *word);
+void handleInstruction(char *inst, unsigned int symbolFound, char *symbolName);
 #endif //LASTCHANCE_FIRSTPHASE_H
