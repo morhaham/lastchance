@@ -49,6 +49,7 @@ void initOperationsHT();
 void initInstructionsHT();
 void initRegistersHT();
 void addNode(Data **head, int new_data);
+void removeChar(char *str, char garbage);
 
 
 #endif //LASTCHANCE_GLOBALS_H

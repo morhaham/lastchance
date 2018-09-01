@@ -74,3 +74,13 @@ void addNode(Data **head, int new_data) {
     /* move the head to point to the new node */
     (*head) = new_node;
 }
+
+void removeChar(char *str, char garbage) {
+
+    char *src, *dst;
+    for (src = dst = str; *src != '\0'; src++) {
+        *dst = *src;
+        if (*dst != garbage) dst++;
+    }
+    *dst = '\0';
+}

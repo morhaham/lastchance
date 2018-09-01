@@ -62,7 +62,8 @@ void firstScan() {
         } /* END OF - IF '.' FOUND IN THE FIRST CHAR AT THE CURRENT WORD */
 
     } /* END OF READING LINES LOOP */
-
+    /*TODO: Step 14 in the first scan is not represented in this function.
+     * maybe L is file->LineNum? */
 } /* END OF firstScan FUNCTION */
 
 unsigned int isInstruction(char *word) {
@@ -93,6 +94,7 @@ int isOperation(char *word) {
     return FALSE;
 }
 
+/*TODO: decide if we do strcmp and op. check for each op. or check the parameters of common ops (like mov, add and sub - check page 27 at the notebook) */
 /*
 void handleOperation(char *op, unsigned int symbolFound, char *symbolName) {
 
@@ -207,7 +209,8 @@ void handleStringInst(char *inst, unsigned int symbolFound, char *symbolName) {
                     addDataParamToDataList(*param);
                     ++DC;
                 } else {
-                    ASSEMBLY_SYNTAX_ERROR("Invalid .data parameter %s at line %d", param, file->lineNum)
+                    removeChar(param, '\n');
+                    ASSEMBLY_SYNTAX_ERROR("Invalid .string parameter %s at line %d", param, file->lineNum)
                 }
                 ++param;
             }
