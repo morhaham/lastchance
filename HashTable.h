@@ -29,7 +29,7 @@ typedef struct HashTable {
 
 HashTable *createHashTable( int size );
 /*map the key to the value*/
-void setValue (HashTable* labelHashTable, char* key, unsigned char value,  char* entryType);
+void setValue (HashTable* labelHashTable, char* key, unsigned int value,  char* entryType);
 int hash(HashTable *hashTable, char *key);
 Entry *createNewPair( char *key, unsigned char value, char* entryType );
 unsigned char getValue( HashTable *hashTable, char *key );

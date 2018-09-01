@@ -74,7 +74,7 @@ Entry *createNewPair(char *key, unsigned char value, char* entryType ) {
 }
 
 /* Insert a key-value pair into a hash table. */
-void setValue( HashTable *hashtable, char *key, unsigned char value,  char* entryType ) {
+void setValue( HashTable *hashtable, char *key, unsigned int value,  char* entryType ) {
     int bin = 0;
     Entry *newpair = NULL;
     Entry *next = NULL;

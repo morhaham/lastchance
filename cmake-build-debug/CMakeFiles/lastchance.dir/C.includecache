@@ -23,6 +23,8 @@ Globals.h
 /Users/morhaham/Desktop/lastchance/FirstPhase.c
 string.h
 -
+ctype.h
+-
 FirstPhase.h
 /Users/morhaham/Desktop/lastchance/FirstPhase.h
 File.h

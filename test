@@ -1,2 +1,4 @@
+.data 1,2,3,5
+.extern HELLO,LOLO5, chik
 Hello: .data 1,2,3,4
 .string "sasdasf"
