@@ -244,7 +244,7 @@ int isQuotationsValid(char *paramsSection) {
 unsigned short isJmpWithParamsAddrMethod(char *paramsSection) {
     int charIndexForLabelsCut = 0, charIndexForParamsCut = 0, isNotJmpWithParamsAddrMethod = 0;
     char *tempLabel = malloc(sizeof(paramsSection));
-    char *paramsAfterOpenBracket= malloc(sizeof(paramsSection));
+    char *paramsAfterOpenBracket = malloc(sizeof(paramsSection));
     char *param;
     if (paramsSection == NULL) {
         return FALSE;
@@ -260,7 +260,7 @@ unsigned short isJmpWithParamsAddrMethod(char *paramsSection) {
             if (paramsSection[charIndexForLabelsCut] == NULL_CHAR) {
                 /* if we get to a null char before an open bracket, and the label doesn't exist (because we
                  * checked it before) then the parameter is wrong. */
-                ASSEMBLY_SYNTAX_ERROR("Invalid parameter %s at line %d",paramsSection,file->lineNum)
+                ASSEMBLY_SYNTAX_ERROR("Invalid parameter %s at line %d", paramsSection, file->lineNum)
             }
             ++charIndexForLabelsCut;
         }
@@ -272,13 +272,13 @@ unsigned short isJmpWithParamsAddrMethod(char *paramsSection) {
         }
         ++charIndexForLabelsCut;
         /* Cuts the params part (after OPEN_BRACKET) and checks if the params are valid*/
-        strncpy(paramsAfterOpenBracket, paramsSection+charIndexForLabelsCut, strlen(paramsSection)-1);
+        strncpy(paramsAfterOpenBracket, paramsSection + charIndexForLabelsCut, strlen(paramsSection) - 1);
         /*param = strtok(paramsAfterOpenBracket, COMMA);*/
         while (paramsAfterOpenBracket[charIndexForParamsCut] != CLOSE_BRACKET_CHAR) {
             if (paramsAfterOpenBracket[charIndexForParamsCut] == NULL_CHAR) {
                 /* if we get to a null char before an open bracket, and the label doesn't exist (because we
                  * checked it before) then the parameter is wrong. */
-                ASSEMBLY_SYNTAX_ERROR("Invalid parameter %s at line %d",paramsSection,file->lineNum)
+                ASSEMBLY_SYNTAX_ERROR("Invalid parameter %s at line %d", paramsSection, file->lineNum)
                 return FALSE;
             }
             ++charIndexForParamsCut;
@@ -286,17 +286,36 @@ unsigned short isJmpWithParamsAddrMethod(char *paramsSection) {
         /* paramsAfterOpenBracket will point to the first parameter after the open bracket */
         paramsAfterOpenBracket = strtok(paramsAfterOpenBracket, DANI_CALFON);
         do {
-            if (getParamAddrMethod(paramsAfterOpenBracket) != IMMEDIATE && getParamAddrMethod(paramsAfterOpenBracket) != DIRECT &&
+            if (getParamAddrMethod(paramsAfterOpenBracket) != IMMEDIATE &&
+                getParamAddrMethod(paramsAfterOpenBracket) != DIRECT &&
                 getParamAddrMethod(paramsAfterOpenBracket) != REGISTER) {
-                ASSEMBLY_SYNTAX_ERROR("Invalid param for %s operation at line %d", paramsAfterOpenBracket, file->lineNum);
+                ASSEMBLY_SYNTAX_ERROR("Invalid param for %s operation at line %d", paramsAfterOpenBracket,
+                                      file->lineNum);
             }
         } while ((paramsAfterOpenBracket = strtok(NULL, strcat(CLOSE_BRACKET_STR, COMMA))) != NULL);
     }
     return TRUE;
 }
 
-unsigned short getParamAddrMethod(char *paramsSection) {
+unsigned short getParamAddrMethod(char *param) {
+    int charIndex = 0, numAfterHashTag = -1;
+    char *paramWithoutHashTag = malloc(sizeof(param)), *charAfterStrtol = NULL;
+    while (param != NULL_CHAR) {
+        if (getType(registersHT, param) != NULL) {
+            return REGISTER;
+        } else if (param[charIndex] == HASH_TAG) {
+            strncpy(paramWithoutHashTag, param + 1, strlen(param) - 1);
+            numAfterHashTag = strtol(paramWithoutHashTag, charAfterStrtol, 10);
+            if (charAfterStrtol == NULL) {
+                return IMMEDIATE;
+            }
+        } else if (getType(symbolsHT, param) != NULL) {
+            /*TODO: what do we do if the label wasn't declared yet? according to p. 17, we should take care of that*/
+            return DIRECT;
 
+        } else if (DANI_CALFON) {}
+
+    }
 
     return TRUE;
     /* check if it's a direct addr method */

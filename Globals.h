@@ -28,6 +28,7 @@ FIRST_SCAN_ERRORS_FOUND = 1;
 #define CLOSE_BRACKET_CHAR ')'
 #define DANI_CALFON "),"
 #define BRACKETS "()"
+#define HASH_TAG '#'
 #define READ_MODE "r"
 #define WHITE_SPACE " \t\v\f\r"
 
