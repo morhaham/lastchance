@@ -116,15 +116,28 @@ void handleOperation(char *op, unsigned int symbolFound, char *symbolName) {
                     setValue(symbolsHT, symbolName, IC, "code");
                 }
             }
-
+        } else {
+            ASSEMBLY_SYNTAX_ERROR("Operation %s at line %d should receive parameters", op, file->lineNum);
+        }
+    }
+    if (getValue(operationsHT, op) == NOT || getValue(operationsHT, op) == CLR || getValue(operationsHT, op) == INC
+            || getValue(operationsHT, op) == NOT) {
+        if (paramsSection) {
+            if (isJmpWithParamsAddrMethod(paramsSection)) {
+                /* TODO: skip spaces between the label and the brackets*/
+                /*TODO: handle the params split with a dedicated function (like Costa's ProcessCommandParam)*/
+                /*TODO: handle the lable check with a dedicated function*/
+                if (symbolFound) {
+                    setValue(symbolsHT, symbolName, IC, "code");
+                }
+            }
         } else {
             ASSEMBLY_SYNTAX_ERROR("Operation %s at line %d should receive parameters", op, file->lineNum);
         }
     }
 
 
-    if (symbolFound) {
-        /*addSymbol(symbolName);*/
+
     }
 }
 
@@ -284,7 +297,7 @@ unsigned short isJmpWithParamsAddrMethod(char *paramsSection) {
             ++charIndexForParamsCut;
         }
         /* paramsAfterOpenBracket will point to the first parameter after the open bracket */
-        paramsAfterOpenBracket = strtok(paramsAfterOpenBracket, DANI_CALFON);
+        paramsAfterOpenBracket = strtok(paramsAfterOpenBracket, COMMA_AND_BRACKET);
         do {
             if (getParamAddrMethod(paramsAfterOpenBracket) != IMMEDIATE &&
                 getParamAddrMethod(paramsAfterOpenBracket) != DIRECT &&
@@ -292,7 +305,7 @@ unsigned short isJmpWithParamsAddrMethod(char *paramsSection) {
                 ASSEMBLY_SYNTAX_ERROR("Invalid param for %s operation at line %d", paramsAfterOpenBracket,
                                       file->lineNum);
             }
-        } while ((paramsAfterOpenBracket = strtok(NULL, strcat(CLOSE_BRACKET_STR, COMMA))) != NULL);
+        } while ((paramsAfterOpenBracket = strtok(NULL, COMMA_AND_BRACKET)) != NULL);
     }
     return TRUE;
 }
@@ -300,7 +313,7 @@ unsigned short isJmpWithParamsAddrMethod(char *paramsSection) {
 unsigned short getParamAddrMethod(char *param) {
     int charIndex = 0, numAfterHashTag = -1;
     char *paramWithoutHashTag = malloc(sizeof(param)), *charAfterStrtol = NULL;
-    while (param != NULL_CHAR) {
+    while (param != NULL) {
         if (getType(registersHT, param) != NULL) {
             return REGISTER;
         } else if (param[charIndex] == HASH_TAG) {
@@ -312,9 +325,8 @@ unsigned short getParamAddrMethod(char *param) {
         } else if (getType(symbolsHT, param) != NULL) {
             /*TODO: what do we do if the label wasn't declared yet? according to p. 17, we should take care of that*/
             return DIRECT;
-
-        } else if (DANI_CALFON) {}
-
+        } else
+            return -1;
     }
 
     return TRUE;
