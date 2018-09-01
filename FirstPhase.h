@@ -13,12 +13,13 @@ void handleInstruction(char *inst, unsigned int symbolFound, char *symbolName);
 void handleExternInst(char *inst);
 void handleDataInst(char *inst, unsigned int symbolFound, char *symbolName);
 void handleStringInst(char *inst, unsigned int symbolFound, char *symbolName);
-/*void handleOperation(char *op, unsigned int symbolFound, char *symbolName);*/
+void handleOperation(char *op, unsigned int symbolFound, char *symbolName);
 void addDataParamToDataList(int newDataNum);
 int isSyntaxValidSymbol(char *symbol);
 int isOperation(char *word);
 int isCommasValid(char *paramsSection);
 int isQuotationsValid(char *paramsSection);
-
+unsigned short isJmpWithParamsAddrMethod(char *paramsSection);
+unsigned short getParamAddrMethod(char *paramsSection);
 
 #endif //LASTCHANCE_FIRSTPHASE_H

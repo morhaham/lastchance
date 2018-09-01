@@ -25,8 +25,7 @@ void firstScan() {
 
         /* Check if the first word is a symbol */
         if (word[charIndex] == ':') {
-            symbolFound = 1;
-
+            word[charIndex] = '\0';
             /* Skip to the second word in the current line */
             if ((word = strtok(NULL, WHITE_SPACE)) == NULL) {
                 /* If a second word not found in the current line, print an error and skip to the next line */
@@ -55,7 +54,7 @@ void firstScan() {
             /* If an operation is found, handleOperation will handle the rest of the line
             * by continuing to extract the tokens of the word using strtok */
         } else if (isOperation(word)) {
-            /*handleOperation(word, symbolFound, symbolName);*/
+            handleOperation(word, symbolFound, symbolName);
         } else {
             ASSEMBLY_SYNTAX_ERROR("Operation name %s is invalid at line %d", word, file->lineNum);
             continue;
@@ -95,31 +94,47 @@ int isOperation(char *word) {
 }
 
 /*TODO: decide if we do strcmp and op. check for each op. or check the parameters of common ops (like mov, add and sub - check page 27 at the notebook) */
-/*
+
 void handleOperation(char *op, unsigned int symbolFound, char *symbolName) {
+    char *paramsSection = op, *param;
+    paramsSection = strtok(NULL, WHITE_SPACE);
 
-    if (strcmp(op, ".extern") == 0) {
-        handleExternInst(inst);
-    } else if (strcmp(inst, ".data") == 0) {
-        handleDataInst(inst, symbolFound, symbolName);
-    } else if (strcmp(inst, ".string") == 0) {
-        handleStringInst(inst, symbolFound, symbolName);
+    /**/
+    if (getValue(operationsHT, op) == STOP || getValue(operationsHT, op) == RTS) {
+        if (!paramsSection) {
+            ASSEMBLY_SYNTAX_ERROR("Invalid parameter for operation %s at line %d", op, file->lineNum);
+            return;
+        }
+    }
+    if (getValue(operationsHT, op) == JMP || getValue(operationsHT, op) == BNE || getValue(operationsHT, op) == JSR) {
+        if (paramsSection) {
+            if (isJmpWithParamsAddrMethod(paramsSection)) {
+                /* TODO: skip spaces between the label and the brackets*/
+                /*TODO: handle the params split with a dedicated function (like Costa's ProcessCommandParam)*/
+                /*TODO: handle the lable check with a dedicated function*/
+                if (symbolFound) {
+                    setValue(symbolsHT, symbolName, IC, "code");
+                }
+            }
+
+        } else {
+            ASSEMBLY_SYNTAX_ERROR("Operation %s at line %d should receive parameters", op, file->lineNum);
+        }
     }
 
 
-    After we know that the instruction line is valid, we can add the symbol if exists
     if (symbolFound) {
-        addSymbol(symbolName);
+        /*addSymbol(symbolName);*/
     }
-}*/
+}
 
 
 void handleExternInst(char *inst) {
-    char *param;
+    char *param, *paramsSection;
     /* Get to the params section in the line */
-    inst = strtok(NULL, WHITE_SPACE);
+    paramsSection = strtok(NULL, WHITE_SPACE);
     /* split the line's params section by commas */
-    param = strtok(inst, COMMA);
+    param = strtok(paramsSection, COMMA);
     do {
         if (getValue(symbolsHT, param)) {
             continue;
@@ -218,10 +233,71 @@ void handleStringInst(char *inst, unsigned int symbolFound, char *symbolName) {
     }
 }
 
-int isCommasValid(char *paramsSection){
+int isCommasValid(char *paramsSection) {
     return 1;
 }
 
-int isQuotationsValid(char *paramsSection){
+int isQuotationsValid(char *paramsSection) {
     return 1;
+}
+
+unsigned short isJmpWithParamsAddrMethod(char *paramsSection) {
+    int charIndexForLabelsCut = 0, charIndexForParamsCut = 0, isNotJmpWithParamsAddrMethod = 0;
+    char *tempLabel = malloc(sizeof(paramsSection));
+    char *paramsAfterOpenBracket= malloc(sizeof(paramsSection));
+    char *param;
+    if (paramsSection == NULL) {
+        return FALSE;
+    }
+    paramsSection = strtok(paramsSection, "\n");
+    if (getType(symbolsHT, paramsSection) != NULL) {
+        return TRUE;
+    }
+    /* check if it's a jump with parameters addr method */
+    while (paramsSection[charIndexForLabelsCut] != NULL_CHAR) {
+        /* check if there is a symbol before an open bracket */
+        while (paramsSection[charIndexForLabelsCut] != OPEN_BRACKET) {
+            if (paramsSection[charIndexForLabelsCut] == NULL_CHAR) {
+                /* if we get to a null char before an open bracket, and the label doesn't exist (because we
+                 * checked it before) then the parameter is wrong. */
+                ASSEMBLY_SYNTAX_ERROR("Invalid parameter %s at line %d",paramsSection,file->lineNum)
+            }
+            ++charIndexForLabelsCut;
+        }
+        /* Cuts the label from paramsSections and checks if the label is valid */
+        strncpy(tempLabel, paramsSection, charIndexForLabelsCut);
+        if (getType(symbolsHT, tempLabel) == NULL) {
+            ASSEMBLY_SYNTAX_ERROR("Symbol %s does not exist at line %d", tempLabel, file->lineNum);
+            return FALSE;
+        }
+        ++charIndexForLabelsCut;
+        /* Cuts the params part (after OPEN_BRACKET) and checks if the params are valid*/
+        strncpy(paramsAfterOpenBracket, paramsSection+charIndexForLabelsCut, strlen(paramsSection)-1);
+        /*param = strtok(paramsAfterOpenBracket, COMMA);*/
+        while (paramsAfterOpenBracket[charIndexForParamsCut] != CLOSE_BRACKET_CHAR) {
+            if (paramsAfterOpenBracket[charIndexForParamsCut] == NULL_CHAR) {
+                /* if we get to a null char before an open bracket, and the label doesn't exist (because we
+                 * checked it before) then the parameter is wrong. */
+                ASSEMBLY_SYNTAX_ERROR("Invalid parameter %s at line %d",paramsSection,file->lineNum)
+                return FALSE;
+            }
+            ++charIndexForParamsCut;
+        }
+        /* paramsAfterOpenBracket will point to the first parameter after the open bracket */
+        paramsAfterOpenBracket = strtok(paramsAfterOpenBracket, DANI_CALFON);
+        do {
+            if (getParamAddrMethod(paramsAfterOpenBracket) != IMMEDIATE && getParamAddrMethod(paramsAfterOpenBracket) != DIRECT &&
+                getParamAddrMethod(paramsAfterOpenBracket) != REGISTER) {
+                ASSEMBLY_SYNTAX_ERROR("Invalid param for %s operation at line %d", paramsAfterOpenBracket, file->lineNum);
+            }
+        } while ((paramsAfterOpenBracket = strtok(NULL, strcat(CLOSE_BRACKET_STR, COMMA))) != NULL);
+    }
+    return TRUE;
+}
+
+unsigned short getParamAddrMethod(char *paramsSection) {
+
+
+    return TRUE;
+    /* check if it's a direct addr method */
 }

@@ -20,8 +20,14 @@ FIRST_SCAN_ERRORS_FOUND = 1;
 
 #define TRUE 1
 #define FALSE 0
+#define NULL_CHAR '\0'
 #define COMMA ","
 #define QUOTATIONS "\""
+#define OPEN_BRACKET '('
+#define CLOSE_BRACKET_STR ")"
+#define CLOSE_BRACKET_CHAR ')'
+#define DANI_CALFON "),"
+#define BRACKETS "()"
 #define READ_MODE "r"
 #define WHITE_SPACE " \t\v\f\r"
 
@@ -41,7 +47,8 @@ typedef struct Data {
 
 Data *dataHead;
 
-
+enum operations {MOV, CMP, ADD, SUB, NOT, CLR, LEA, INC, DEC, JMP, BNE, RED, PRN, JSR, RTS, STOP};
+enum addressingMethods{IMMEDIATE,DIRECT,JMP_WITH_PARAMS,REGISTER};
 /* Funcs decs */
 void initProgramGlobals();
 void initFileGlobals();
